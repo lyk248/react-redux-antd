@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Form, Input, Button } from 'antd';
 import { loginUser } from './../../actions/auth';
+import styles from './Login.scss';
 
-import './Login.scss';
 
 const createForm = Form.create;
 const FormItem = Form.Item;
@@ -46,8 +46,8 @@ class Login extends Component {
   }
 
   render() {
-    const { getFieldProps } = this.props.form;
-    const emailProps = getFieldProps('email', {
+    const { getFieldDecorator } = this.props.form;
+    const emailDecorator = getFieldDecorator('email', {
       validate: [{
         rules: [
           { required: true }
@@ -61,27 +61,30 @@ class Login extends Component {
       }]
     });
 
-    const passwordProps = getFieldProps('password', {
+    const passwordDecorator = getFieldDecorator('password', {
       rules: [
         { required: true, min: 8, message: '密码至少为 8 个字符' }
       ]
     });
 
     return (
-      <div className="login-container">
-        <div className="login-mask"/>
-        <Form className="login-content" horizontal onSubmit={this.handleSubmit}>
+      <div className={styles["login-container"]}>
+        <div className={styles["login-mask"]}/>
+        <Form className={styles["login-content"]} horizontal onSubmit={this.handleSubmit}>
           <h2>React Redux Demo</h2>
           <FormItem label="账号" hasFeedback>
-            <Input
-              {...emailProps}
-              placeholder="请输入账号"
-              type="email"
-            />
+            {emailDecorator(<Input placeholder="请输入账号" type="email" />)}
           </FormItem>
           <FormItem label="密码" hasFeedback>
-            <Input {...passwordProps} type="password" autoComplete="off" placeholder="请输入密码"
-              onContextMenu={noop} onPaste={noop} onCopy={noop} onCut={noop} />
+            {passwordDecorator(<Input
+              type="password"
+              autoComplete="off"
+              placeholder="请输入密码"
+              onContextMenu={noop}
+              onPaste={noop}
+              onCopy={noop}
+              onCut={noop}
+            />)}
           </FormItem>
           <FormItem>
             <Button className="ant-col-24" type="primary" htmlType="submit">登录</Button>

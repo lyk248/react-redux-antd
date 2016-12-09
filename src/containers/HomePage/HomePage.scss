@@ -1,8 +1,8 @@
 // color variables
 $lightGrey: #e9e9e9;
 
-.client-info {
-  .ant-row {
+:global(.client-info) {
+  :global(.ant-row) {
     height: 30px;
     line-height: 30px;
     border-left: 1px solid $lightGrey;
@@ -11,7 +11,7 @@ $lightGrey: #e9e9e9;
     &:last-child {
       border-bottom: 1px solid $lightGrey;
     }
-    .ant-col-12 {
+    :global(.ant-col-12) {
       padding-left: 15px;
       &:first-child {
         border-right: 1px solid $lightGrey;

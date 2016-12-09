@@ -4,7 +4,6 @@ import Login from './../Login/Login';
 import { Link } from 'react-router';
 import './App.scss';
 import { Menu, Breadcrumb, Icon } from 'antd';
-const SubMenu = Menu.SubMenu;
 
 class App extends Component {
   static propTypes = {
@@ -30,16 +29,12 @@ class App extends Component {
       <div className="ant-layout-aside">
         <aside className="ant-layout-sider">
           <div className="ant-layout-logo"/>
-          <Menu mode="inline" theme="dark"
-            defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']}>
-            <SubMenu key="sub1" title={<span><Icon type="user" />用户管理</span>}>
-              <Menu.Item key="1">
-                <Link to={'/users'}>
-                  用户列表
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="2">角色配置</Menu.Item>
-            </SubMenu>
+          <Menu mode="inline" theme="dark" defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']}>
+            <Menu.Item key="1">
+              <Link to={'/users'}>
+                <Icon type="user" />首页
+              </Link>
+            </Menu.Item>
           </Menu>
         </aside>
         <div className="ant-layout-main">
@@ -47,8 +42,6 @@ class App extends Component {
           <div className="ant-layout-breadcrumb">
             <Breadcrumb>
               <Breadcrumb.Item>首页</Breadcrumb.Item>
-              <Breadcrumb.Item>用户管理</Breadcrumb.Item>
-              <Breadcrumb.Item>用户列表</Breadcrumb.Item>
             </Breadcrumb>
           </div>
           <div className="ant-layout-container">

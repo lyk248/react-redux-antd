@@ -13,8 +13,8 @@ const middlewares = jsonServer.defaults();
 let router = jsonServer.router(db);
 const token = "7xPJPuVfTse2pFHc5Pfu";
 
-function isAuthorized(req){
-  return req.get("Authorization") == token;
+function isAuthorized(){
+  return true;
 }
 
 function start(){
@@ -26,7 +26,7 @@ function start(){
         access_token: token
       });
     }
-    if (req.originalUrl == '/db' || isAuthorized(req)) { // add your authorization logic here
+    if (req.originalUrl == '/db' || isAuthorized()) { // add your authorization logic here
       // continue to Mock Server router
       next();
     } else {
